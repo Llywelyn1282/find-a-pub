@@ -4,7 +4,6 @@ from .models import Pub, Comment, OpeningHour
 
 class OpeningHoursInline(admin.TabularInline):
     model = OpeningHour
-    extra = 1
     ordering = ['day']
     fields = ('day', 'opening_time', 'closing_time', 'closed')
     max_num = 7

@@ -9,18 +9,18 @@ PRICE = ((0, "£"), (1, "££"), (2, "£££"), (3, "££££"), (4, "£££££
 
 
 DAYS_OF_WEEK = [
-        ('mon', 'Monday'),
-        ('tue', 'Tuesday'),
-        ('wed', 'Wednesday'),
-        ('thu', 'Thursday'),
-        ('fri', 'Friday'),
-        ('sat', 'Saturday'),
-        ('sun', 'Sunday'),
+        ('0', 'Monday'),
+        ('1', 'Tuesday'),
+        ('2', 'Wednesday'),
+        ('3', 'Thursday'),
+        ('4', 'Friday'),
+        ('5', 'Saturday'),
+        ('6', 'Sunday'),
     ]
 
 
 class Pub(models.Model):
-    pub_name = models.CharField(max_length=200, unique=True)
+    name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     address = models.CharField(max_length=500, unique=True)
     price = models.IntegerField(choices=PRICE, default=0)
@@ -35,13 +35,14 @@ class Pub(models.Model):
     author = models.ForeignKey(
             User, on_delete=models.CASCADE, related_name="pub_listing")
     created_on = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"{self.pub_name}"
+        return f"{self.name}"
 
 
 class Comment(models.Model):
@@ -63,7 +64,7 @@ class Comment(models.Model):
 class OpeningHour(models.Model):
     pub = models.ForeignKey(
          Pub, on_delete=models.CASCADE, related_name="opening_hours")
-    day = models.CharField(max_length=3, choices=DAYS_OF_WEEK)
+    day = models.CharField(max_length=1, choices=DAYS_OF_WEEK)
     opening_time = models.TimeField()
     closing_time = models.TimeField()
     closed = models.BooleanField(default=False)
@@ -72,6 +73,6 @@ class OpeningHour(models.Model):
         unique_together = ('pub', 'day')
 
     def __str__(self):
-        if self.is_closed:
+        if self.closed:
             return f"{self.pub.name} - {self.get_day_display()}: Closed"
-        return f"{self.pub.name} - {self.get_day_display()}: {self.open_time.strftime('%H:%M')} - {self.close_time.strftime('%H:%M')}"
+        return f"{self.pub.name} - {self.get_day_display()}: {self.opening_time.strftime('%H:%M')} - {self.closing_time.strftime('%H:%M')}"
