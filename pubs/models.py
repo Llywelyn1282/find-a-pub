@@ -22,8 +22,19 @@ class Pub(models.Model):
     dog_Friendly = models.IntegerField(choices=YESORNO, default=0)
     pool_Table = models.IntegerField(choices=YESORNO, default=0)
     dart_Board = models.IntegerField(choices=YESORNO, default=0)
+    excerpt = models.TextField(blank=True)
     description = models.TextField()
     author = models.ForeignKey(
             User, on_delete=models.CASCADE, related_name="pub_listing")
     date_created = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(
+        Pub, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="commenter")
+    body = models.TextField()
+    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
