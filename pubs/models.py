@@ -6,35 +6,72 @@ from django.contrib.auth.models import User
 STATUS = ((0, "Draft"), (1, "Published"))
 YESORNO = ((0, "No"), (1, "Yes"))
 PRICE = ((0, "£"), (1, "££"), (2, "£££"), (3, "££££"), (4, "£££££"))
-WEEKDAYS = ((0, "Monday"), (1, "Tuesday"), (2, "Wednesday"), (3, "Thursday"), 
-                    (4, "Friday"), (5, "Saturday"), (6, "Sunday"))
-HOUR_OF_DAY_24 = [(i,i) for i in range(1,25)]
+
+
+DAYS_OF_WEEK = [
+        ('mon', 'Monday'),
+        ('tue', 'Tuesday'),
+        ('wed', 'Wednesday'),
+        ('thu', 'Thursday'),
+        ('fri', 'Friday'),
+        ('sat', 'Saturday'),
+        ('sun', 'Sunday'),
+    ]
 
 
 class Pub(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+    pub_name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     address = models.CharField(max_length=500, unique=True)
     price = models.IntegerField(choices=PRICE, default=0)
     food = models.IntegerField(choices=YESORNO, default=0)
-    craft_Beer = models.IntegerField(choices=YESORNO, default=0)
-    beer_Garden = models.IntegerField(choices=YESORNO, default=0)
-    dog_Friendly = models.IntegerField(choices=YESORNO, default=0)
+    craft_beer = models.IntegerField(choices=YESORNO, default=0)
+    beer_garden = models.IntegerField(choices=YESORNO, default=0)
+    dog_friendly = models.IntegerField(choices=YESORNO, default=0)
     pool_Table = models.IntegerField(choices=YESORNO, default=0)
     dart_Board = models.IntegerField(choices=YESORNO, default=0)
     excerpt = models.TextField(blank=True)
     description = models.TextField()
     author = models.ForeignKey(
             User, on_delete=models.CASCADE, related_name="pub_listing")
-    date_created = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return f"{self.pub_name}"
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(
+    pub = models.ForeignKey(
         Pub, on_delete=models.CASCADE, related_name="comments")
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="commenter")
     body = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return f"{self.body} by {self.author}"
+
+
+class OpeningHour(models.Model):
+    pub = models.ForeignKey(
+         Pub, on_delete=models.CASCADE, related_name="opening_hours")
+    day = models.CharField(max_length=3, choices=DAYS_OF_WEEK)
+    opening_time = models.TimeField()
+    closing_time = models.TimeField()
+    closed = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ('pub', 'day')
+
+    def __str__(self):
+        if self.is_closed:
+            return f"{self.pub.name} - {self.get_day_display()}: Closed"
+        return f"{self.pub.name} - {self.get_day_display()}: {self.open_time.strftime('%H:%M')} - {self.close_time.strftime('%H:%M')}"
