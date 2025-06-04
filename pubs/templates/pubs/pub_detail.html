@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6 masthead-text">
+                <!-- Post title goes in these h1 tags -->
+                <h1 class="post-title">{{ pub.name }}</h1>
+                <p class="post-subtitle1">{{ pub.location }} | {{ pub.price }}</p>
+                
+                
+            </div>
+            <div class="d-none d-md-block col-md-6 masthead-image">
+                <img src="{% static 'images/default.jpg' %}" class="scale" alt="placeholder">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <!-- The post content goes inside the card-text. -->
+                <!-- Use the | safe filter inside the template tags -->
+                <p class="card-text">
+                    {{ pub.description | safe }}
+                </p>
+                <p class="post-subtitle2">{{ pub.author }} | last updated {{ pub.updated }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ pub.food }}
+{{ pub.craft_beer }}
+{{ pub.beer_garden}}
+{{ pub.dog_friendly }}
+{{ pub.pool_Table}}
+{{ pub.dart_Board }}
+
+address
+phone_number
+
+{% endblock content %}

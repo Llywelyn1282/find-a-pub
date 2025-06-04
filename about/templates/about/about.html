@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- index.html content starts here -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Pub Entries Column -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for post in about_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container">
+                                <div class="image-flash">
+                                    <p class="description">{{ post.description }}</p>
+                                </div>
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- index.html content ends here -->
+{% endblock %}
+
+</html>

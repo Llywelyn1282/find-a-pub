@@ -2,14 +2,6 @@ from django.contrib import admin
 from .models import Pub, Comment, OpeningHour
 from django_summernote.admin import SummernoteModelAdmin
 
-class PostAdmin(SummernoteModelAdmin):
-
-    list_display = ('title', 'slug', 'status')
-    search_fields = ['title']
-    list_filter = ('status',)
-    prepopulated_fields = {'slug': ('title',)}
-    summernote_fields = ('content',)
-
 
 class OpeningHoursInline(admin.TabularInline):
     model = OpeningHour
@@ -18,7 +10,13 @@ class OpeningHoursInline(admin.TabularInline):
     max_num = 7
 
 @admin.register(Pub)
-class PubAdmin(admin.ModelAdmin):
+class PubAdmin(SummernoteModelAdmin):
+
+    list_display = ('name', 'slug', 'status')
+    search_fields = ['name', 'description']
+    list_filter = ('status', 'created_on')
+    prepopulated_fields = {'slug': ('name',)}
+    summernote_fields = ('description',)
     inlines = [OpeningHoursInline]
 
 admin.site.register(Comment)

@@ -3,6 +3,6 @@ from django.views import generic
 from .models import About
 
 
-# Create your views here.
-class AboutList(generic.ListView):
-    template_name = "about_list.html"
+class About(generic.ListView):
+    model = About
+    template_name = "pubs/index.html"
