@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import About
 
 
 # Create your views here.
-
-def my_about(request):
-    return HttpResponse("This is the about page.")
+class AboutList(generic.ListView):
+    template_name = "about_list.html"
