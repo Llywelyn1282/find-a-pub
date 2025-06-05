@@ -1,34 +1,23 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
 {% block content %}
-
-<!-- index.html content starts here -->
-<div class="container-fluid">
+{% load static %}
+<div class="container mt-5">
     <div class="row">
-
-        <!-- Pub Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for post in about_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                <div class="image-flash">
-                                    <p class="description">{{ post.description }}</p>
-                                </div>
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-
-            </div>
+        <div class="col-4 text-center">
+            <img src="{% static 'images/pint.jpg' %}" width="75%">
+        </div>
+        <div class="col-8">
+            <!-- Title goes between these h2 tags -->
+            <h2>{{ about.title }}</h2>
+            <!-- Content goes directly underneath this -->
+             {{ about.description | safe }}
         </div>
     </div>
-    {% endif %}
+    <div class="row">
+        <div class="col text-right">
+            <!-- Updated on field goes in here -->
+            <p class="text-end"><em>Updated on: {{ about.updated_on }}</em></p>
+        </div>
+      </div>
 </div>
-
-<!-- index.html content ends here -->
-{% endblock %}
-
-</html>
+{% endblock content %}

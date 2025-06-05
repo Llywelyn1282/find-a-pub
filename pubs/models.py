@@ -27,6 +27,7 @@ class Pub(models.Model):
     location = models.CharField(max_length=200, blank=True)
     address = models.CharField(max_length=500, unique=True)
     phone_number = models.CharField(max_length=12, blank=True)
+    email = models.CharField(blank=True)
     price = models.CharField(choices=PRICE, default="£")
     food = models.CharField(choices=YESORNO, default="No")
     craft_beer = models.CharField(choices=YESORNO, default="No")
