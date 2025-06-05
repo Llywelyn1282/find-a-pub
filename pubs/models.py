@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -23,7 +24,7 @@ DAYS_OF_WEEK = [
 class Pub(models.Model):
     name = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    image = models.ImageField(default="default.jpg")
+    image = CloudinaryField('image', default='placeholder')
     location = models.CharField(max_length=200, blank=True)
     address = models.CharField(max_length=500, unique=True)
     phone_number = models.CharField(max_length=12, blank=True)
