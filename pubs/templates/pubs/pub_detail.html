@@ -7,7 +7,9 @@
             <div class="col-md-6 masthead-text">
                 <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ pub.name }}</h1>
-                <p class="post-subtitle1">{{ pub.location }} | {{ pub.price }}</p>
+                <p class="post-subtitle1">{{ pub.location }} | {{ pub.price }}<br>
+                Food: {{ pub.food }} | Craft Beer: {{ pub.craft_beer }} | Outside Seating: {{ pub.beer_garden}}<br>
+                Dog Friendly: {{ pub.dog_friendly }} | Pool Table: {{ pub.pool_table}} | Dart Board: {{ pub.dart_board }}</p>
                 
                 
             </div>
@@ -33,14 +35,22 @@
     </div>
 </div>
 
-{{ pub.food }}
-{{ pub.craft_beer }}
-{{ pub.beer_garden}}
-{{ pub.dog_friendly }}
-{{ pub.pool_Table}}
-{{ pub.dart_Board }}
-
-address
-phone_number
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <p class="card-text">
+                    Address: {{ pub.address}} <br>
+                    Phone: {{ pub.phone_number }}
+                </p>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Opening Hours:
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
