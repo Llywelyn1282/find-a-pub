@@ -1,22 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Germania+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 :root {
-  --color-1: ;
-  --color-2: ;
-  --color-3: ;
-  --color-4: ;
-
+  --color-1: #606C38;
+  --color-2: #283618;
+  --color-3: #FEFAE0;
+  --color-4: #DDA15E;
+  --color-5: #BC6C25;
 }
 
 body {
     background-color: #F9FAFC;
+    font-family: "Inter", sans-serif;
+}
+
+h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
 }
 
 .brand {
-    font-family: "Germania One", sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-family: "Inter", sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
     color: #4A4A4F;
 }
 
