@@ -73,22 +73,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.body} by {self.author}"
-
-
-class OpeningHour(models.Model):
-    pub = models.ForeignKey(
-         Pub, on_delete=models.CASCADE, related_name="opening_hours")
-    day = models.CharField(max_length=1, choices=DAYS_OF_WEEK)
-    opening_time = models.TimeField()
-    closing_time = models.TimeField()
-    closed = models.BooleanField(default=False)
-
-    class Meta:
-        unique_together = ('pub', 'day')
-
-    def __str__(self):
-        if self.closed:
-            return f"{self.pub.name} - {self.get_day_display()}: Closed"
-        return f"{self.pub.name}"
-        "- {self.get_day_display()}:{self.opening_time.strftime('%H:%M')}"
-        "- {self.closing_time.strftime('%H:%M')}"

@@ -44,14 +44,25 @@
         <p class="card-text">{{ pub.description | safe }}</p>
       </div>
       <div class="card-body">
+        <h2>Contact Details</h2>
         <p class="card-text">
-          Phone: {{ pub.phone_number }} <br />
-          Email: {{ pub.email}} <br />
-          Address: {{ pub.address}}
+          Phone: {{ pub.phone_number }} <br>
+          Email: {{ pub.email }} <br>
+          Website: {{ pub.website }} <br>
+          Address: {{ pub.address }}
         </p>
       </div>
       <div class="card-body">
-        <p class="card-text">Opening Hours:</p>
+        <h2>Opening Hours</h2>
+        <p class="card-text">
+        Monday: {{ pub.mon_opening }} <br>
+        Tuesday: {{ pub.tues_opening }} <br>
+        Wednesday: {{ pub.wed_opening }} <br>
+        Thursday: {{ pub.thurs_opening }} <br>
+        Friday: {{ pub.fri_opening }} <br>
+        Saturday: {{ pub.sat_opening }} <br>
+        Sunday: {{pub.sun_opening}}
+      </p>
       </div>
        <div class="card-body">
         <p>
