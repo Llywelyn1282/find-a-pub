@@ -1,5 +1,5 @@
 {% load static %} {% url 'home' as home_url %} {% url 'about' as about_url %} 
-{% url 'account_login' as login_url %} {% url 'account_signup' as signup_url %} 
+{% url 'account_login' as login_url %} {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 
 <!DOCTYPE html>
@@ -9,9 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="static/images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon/favicon-16x16.png">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="static/images/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="static/images/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="static/images/favicon/favicon-16x16.png"
+    />
 
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -43,110 +57,120 @@
   </head>
 
   <body class="d-flex flex-column h-100 main-bg">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light light-bg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'Pubs' %}"
-          ><span class="brand">findapub</span></a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == home_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'Pubs' %}"
-                >home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == about_url %}active{%endif%}"
-                aria-current="page"
-                href="{% url 'about' %}"
-                >about</a
-              >
-            </li>
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == logout_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'account_logout' %}"
-              >
-                logout
-              </a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == signup_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'account_signup' %}"
-              >
-                register
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link {% if request.path == login_url %}active{% endif %}"
-                aria-current="page"
-                href="{% url 'account_login' %}"
-              >
-                login
-              </a>
-            </li>
-            {% endif %}
-          </ul>
-          <span class="navbar-text text-muted">
-            find a pub for you in brecon
-          </span>
-        </div>
-      </div>
-    </nav>
 
-    <!-- displaying Django messages -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 offset-md-2">
-          {% for message in messages %}
-          <div
-            class="alert {{ message.tags }} alert-dismissible
-        fade show"
-            id="msg"
-            role="alert"
+    <!-- Header -->
+    <header class="header">
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'Pubs' %}"
+            ><span class="brand">findapub</span></a
           >
-            {{ message | safe }}
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="alert"
-              aria-label="Close"
-            ></button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link {% if request.path == home_url %}active{% endif %}"
+                  aria-current="page"
+                  href="{% url 'Pubs' %}"
+                  >home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link {% if request.path == about_url %}active{%endif%}"
+                  aria-current="page"
+                  href="{% url 'about' %}"
+                  >about</a
+                >
+              </li>
+               <li class="nav-item">
+                <a
+                  class="nav-link {% if request.path == about_url %}active{%endif%}"
+                  aria-current="page"
+                  href="{% url 'contact' %}"
+                  >contact</a
+                >
+              </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a
+                  class="nav-link {% if request.path == logout_url %}active{% endif %}"
+                  aria-current="page"
+                  href="{% url 'account_logout' %}"
+                >
+                  logout
+                </a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a
+                  class="nav-link {% if request.path == signup_url %}active{% endif %}"
+                  aria-current="page"
+                  href="{% url 'account_signup' %}"
+                >
+                  register
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link {% if request.path == login_url %}active{% endif %}"
+                  aria-current="page"
+                  href="{% url 'account_login' %}"
+                >
+                  login
+                </a>
+              </li>
+              {% endif %}
+            </ul>
           </div>
-          {% endfor %}
+        </div>
+      </nav>
+
+      <!-- Displays Django Messages -->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            {% for message in messages %}
+            <div
+              class="alert {{ message.tags }} alert-dismissible
+        fade show"
+              id="msg"
+              role="alert"
+            >
+              {{ message | safe }}
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close"
+              ></button>
+            </div>
+            {% endfor %}
+          </div>
         </div>
       </div>
-    </div>
+    </header>
 
+    <!-- Main -->
     <main class="flex-shrink-0 main-bg">
       {% if user.is_authenticated %}
       <p class="text-end m-3 text-muted">You are logged in as {{ user }}</p>
       {% else %}
       <p class="text-end m-3 text-muted">You are not logged in</p>
       {% endif %} {% block content %}
-      <!-- Content Goes here -->
+      <!-- Content Goes Here -->
       {% endblock content %}
     </main>
 
@@ -165,7 +189,6 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
-    {% block extras %}
-    {% endblock %}
+    {% block extras %} {% endblock %}
   </body>
 </html>

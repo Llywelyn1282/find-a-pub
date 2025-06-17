@@ -19,11 +19,11 @@
                                 <img class="card-img-top" src="{% static 'images/default.jpg' %}"
                                     alt="placeholder image">
                                 {% else %}
-                                    <img class="card-img-top" src=" {{ post.featured_image.url }}"
-                                        alt="{{ post.title }}">
+                                    <img class="card-img-top" src=" {{ post.image.url }}"
+                                        alt="{{ post.name }}">
                                 {% endif %}
-                                <div class="image-location">
-                                    <p class="location">{{ post.location }}</p>
+                                <div class="location">
+                                    <p class="location-text">{{ post.location }}</p>
                                 </div>
                             </div>
                             <a href="{% url 'pub_detail' post.slug %}" class="pub-link">
@@ -32,7 +32,6 @@
                             </a>
 
                             <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on}}
                             </p>
                         </div>
                     </div>

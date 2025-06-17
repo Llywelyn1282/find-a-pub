@@ -1,107 +1,90 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Germania+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 :root {
-  --color-1: ;
-  --color-2: ;
-  --color-3: ;
-  --color-4: ;
-
+  --color-1: #606C38;
+  --color-2: #283618;
+  --color-3: #FEFAE0;
+  --color-4: #DDA15E;
+  --color-5: #BC6C25;
+  --black: #000000;
+  --white: #ffffff;
 }
 
 body {
-    background-color: #F9FAFC;
+    background-color: var(--color-3);
+    font-family: "Inter", sans-serif;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.header, .footer {
+  background-color: var(--color-5);
+  color: var(--white);
+}
+
+h1 {
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
 }
 
 .brand {
-    font-family: "Germania One", sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
+  font-family: "Inter", sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--white);
 }
 
-.light-bg {
-    background-color: #fff;
-}
-
-.dark-bg {
-    background-color: #445261;
-}
-
-.main-bg {
-    background-color: #F9FAFC;
-}
-
-.card {
-    border: none;
-    background-color: transparent;
+.nav-link {
+  color: var(--white);
+  font-size: 1.1rem;
 }
 
 .image-container {
     position: relative;
 }
 
-.image-flash {
+.location {
     position: absolute;
     bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #188181;
-}
-
-.scale {
-    width: 100%;
-    height: auto;
-}
-
-.author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
+    min-width: relative;
+    background-color: var(--color-1);
+    color: var(--white);
+    padding: 3%;
+    padding-bottom: 0%;
 }
 
 .masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
+  margin-top: 5px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  height: 40vh;
+  width: 100%;
 }
 
 .masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
+  background-color: var(--color-5);
+  color: var(--white);
+  position: relative;
 }
 
 .masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
+  position: relative;
+  overflow: hidden;
 }
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: var(--color-2);
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: var(--color-1);
 }
 
 .post-title {
@@ -111,23 +94,23 @@ body {
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: var(--color-3);
 }
 
 .btn-signup,
 .btn-edit {
-    background-color: #188181;
-    color: #fff;
+    background-color: var(--color-1);
+    color: var(--white);
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: var(--white);
+    color: var(--black);
 }
 
 .link {
-    color: #23BBBB;
+    color: var(--black);
     text-decoration: none;
 }
 
@@ -156,9 +139,9 @@ body {
 }
 
 .faded {
-    color: rgb(172, 175, 175);
+    color: var(--color-1);
 }
 
 .approval {
-    color: rgb(222, 146, 168);
+    color: var(--color-4);
 }
