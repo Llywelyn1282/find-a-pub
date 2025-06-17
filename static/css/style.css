@@ -21,6 +21,11 @@ a {
   text-decoration: none;
 }
 
+a:hover, .nav-link:hover {
+  color: var(--color-1);
+  text-decoration: none;
+}
+
 .header, .footer {
   background-color: var(--color-5);
   color: var(--white);
