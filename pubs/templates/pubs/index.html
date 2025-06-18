@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-
 <!-- index.html content starts here -->
 <div class="container-fluid">
     <div class="row">
@@ -12,15 +11,13 @@
             <div class="row">
                 {% for post in pub_list %}
                 <div class="col-md-4">
-                    <div class="card mb-4">
+                    <div class="card index-card mb-4">
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top" src="{% static 'images/default.jpg' %}"
-                                    alt="placeholder image">
+                                <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
                                 {% else %}
-                                    <img class="card-img-top" src=" {{ post.image.url }}"
-                                        alt="{{ post.name }}">
+                                <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.name }}">
                                 {% endif %}
                                 <div class="location">
                                     <p class="location-text">{{ post.location }}</p>
@@ -29,40 +26,38 @@
                             <a href="{% url 'pub_detail' post.slug %}" class="pub-link">
                                 <h2 class="card-title">{{ post.name }}</h2>
                                 <p class="card-text">
-                                    {{ post.excerpt }} 
-                                    <i class="fa-solid fa-arrow-right"></i>
+                                    {{ post.excerpt }} <i class="fa-solid fa-arrow-right"></i>
                                 </p>
                             </a>
-
-                            <hr />
-                            </p>
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
+
+                {% if forloop.counter|divisibleby:3 and not forloop.last %}
             </div>
             <div class="row">
                 {% endif %}
                 {% endfor %}
-
             </div>
         </div>
     </div>
+
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}"class="page-link">&laquo; PREV</a></li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}"><i class="fa-solid fa-arrow-left"></i> Previous</a>
+            </li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next <i class="fa-solid fa-arrow-right"></i></a>
+            </li>
             {% endif %}
         </ul>
     </nav>
     {% endif %}
 </div>
-
 <!-- index.html content ends here -->
 {% endblock %}
-
-</html>

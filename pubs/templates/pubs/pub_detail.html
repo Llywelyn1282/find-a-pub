@@ -1,20 +1,41 @@
-{% extends 'base.html' %} {% block content %} {% load static %} 
-{% load crispy_forms_tags %}
+{% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} 
+{% block content %}
 
+<!-- Masthead -->
 <div class="masthead">
   <div class="container">
     <div class="row g-0">
-      <div class="col-md-6 masthead-text">
-        <!-- Post title goes in these h1 tags -->
+      <div class="col-md-6 masthead-body">
         <h1 class="post-title">{{ pub.name }}</h1>
-        <p class="post-subtitle">
-          {{ pub.location }} | {{ pub.price }}<br />
-          Food: {{ pub.food }} | Craft Beer: {{ pub.craft_beer }} | Outside
-          Seating: {{ pub.beer_garden}}<br />
-          Dog Friendly: {{ pub.dog_friendly }} | Pool Table: {{ pub.pool_table}}
-          | Dart Board: {{ pub.dart_board }}
-        </p>
+
+        <div class="pub-location-price">
+          <p class="pub-price">{{ pub.price }}</p>
+          <p class="pub-location">{{ pub.location }}</p>
+        </div>
+
+        <div class="pub-amenities">
+          {% if pub.food == "Yes" %}
+          <p class="pub-food"><i class="fa-solid fa-utensils"></i> Food</p>
+          {% endif %}
+          {% if pub.craft_beer == "Yes" %}
+          <p class="pub-craft"><i class="fa-solid fa-beer-mug-empty"></i> Craft Beer</p>
+          {% endif %}
+          {% if pub.beer_garden == "Yes" %}
+          <p class="pub-outside"><i class="fa-solid fa-umbrella-beach"></i> Outside Seating</p>
+          {% endif %}
+          {% if pub.dog_friendly == "Yes" %}
+          <p class="pub-dog"><i class="fa-solid fa-dog"></i> Dog Friendly</p>
+          {% endif %}
+          {% if pub.pool_table == "Yes" %}
+          <p class="pub-pool"><i class="fa-solid fa-trophy"></i> Pool Table</p>
+          {% endif %}
+          {% if pub.dart_board == "Yes" %}
+          <p class="pub-darts"><i class="fa-solid fa-trophy"></i> Dart Board</p>
+          {% endif %}
+        </div>
       </div>
+
+      <!-- Masthead Image -->
       <div class="d-none d-md-block col-md-6 masthead-image">
         {% if "placeholder" in pub.image.url %}
         <img
@@ -25,7 +46,7 @@
         {% else %}
         <img
           class="card-img-top"
-          src=" {{ pub.image.url }}"
+          src="{{ pub.image.url }}"
           alt="{{ pub.name }}"
         />
         {% endif %}
@@ -34,107 +55,114 @@
   </div>
 </div>
 
-
+<!-- Pub Description & Info -->
 <div class="container">
   <div class="row">
     <div class="col card mb-4 mt-3 left top">
       <div class="card-body">
-        <!-- The post content goes inside the card-text. -->
-        <!-- Use the | safe filter inside the template tags -->
         <p class="card-text">{{ pub.description | safe }}</p>
       </div>
+
+      <div class="card-body container">
+        <div class="row">
+          <!-- Opening Hours -->
+          <div class="card-body col-6">
+            <h2>Opening Hours</h2>
+            <p class="card-text">
+              Monday: {{ pub.mon_opening }}<br />
+              Tuesday: {{ pub.tues_opening }}<br />
+              Wednesday: {{ pub.wed_opening }}<br />
+              Thursday: {{ pub.thurs_opening }}<br />
+              Friday: {{ pub.fri_opening }}<br />
+              Saturday: {{ pub.sat_opening }}<br />
+              Sunday: {{ pub.sun_opening }}
+            </p>
+          </div>
+
+          <!-- Contact Details -->
+          <div class="card-body col-6">
+            <h2>Contact Details</h2>
+            <p class="card-text">
+              Phone: {{ pub.phone_number }}<br />
+              Email: {{ pub.email }}<br />
+              Website: {{ pub.website }}<br />
+              Address: {{ pub.address }}
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="card-body">
-        <h2>Contact Details</h2>
-        <p class="card-text">
-          Phone: {{ pub.phone_number }} <br>
-          Email: {{ pub.email }} <br>
-          Website: {{ pub.website }} <br>
-          Address: {{ pub.address }}
-        </p>
+        <p>{{ pub.author }} | last updated {{ pub.updated }}</p>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Comments Section -->
+<div class="container">
+  <div class="row">
+    <!-- Comments Count -->
+    <div class="col-12">
+      <strong class="text-secondary">
+        <i class="far fa-comments"></i> {{ comment_count }}
+      </strong>
+      <hr />
+    </div>
+
+    <!-- Display Comments -->
+    <div class="col-md-8 card mb-4 mt-3">
+      <h3>Comments:</h3>
       <div class="card-body">
-        <h2>Opening Hours</h2>
-        <p class="card-text">
-        Monday: {{ pub.mon_opening }} <br>
-        Tuesday: {{ pub.tues_opening }} <br>
-        Wednesday: {{ pub.wed_opening }} <br>
-        Thursday: {{ pub.thurs_opening }} <br>
-        Friday: {{ pub.fri_opening }} <br>
-        Saturday: {{ pub.sat_opening }} <br>
-        Sunday: {{pub.sun_opening}}
-      </p>
+        {% for comment in comments %}
+        <div
+          class="p-2 comments {% if not comment.approved and comment.author == user %} faded {% elif not comment.approved %} d-none {% endif %}"
+        >
+          <p class="font-weight-bold">
+            {{ comment.author }}
+            <span class="font-weight-normal"> {{ comment.created_on }} </span>
+            wrote:
+          </p>
+          <div id="comment{{ comment.id }}">
+            {{ comment.body | linebreaks }}
+          </div>
+
+          {% if not comment.approved and comment.author == user %}
+          <p class="approval">This comment is awaiting approval</p>
+          {% if user.is_authenticated and comment.author == user %}
+          <button class="btn btn-delete" comment_id="{{ comment.id }}">
+            Delete
+          </button>
+          <button class="btn btn-edit" comment_id="{{ comment.id }}">
+            Edit
+          </button>
+          {% endif %} {% endif %}
+        </div>
+        {% endfor %}
       </div>
-       <div class="card-body">
-        <p>
-          {{ pub.author }} | last updated {{ pub.updated }}
-        </p>
+    </div>
+
+    <!-- Add New Comment -->
+    <div class="col-md-4 card mb-4 mt-3">
+      <div class="card-body">
+        {% if user.is_authenticated %}
+        <h3>Leave a comment:</h3>
+        <p>Posting as: {{ user.username }}</p>
+        <form id="commentForm" method="post" style="margin-top: 1.3em">
+          {{ comment_form | crispy }} {% csrf_token %}
+          <button id="submitButton" type="submit" class="btn btn-signup btn-lg">
+            Submit
+          </button>
+        </form>
+        {% else %}
+        <p>Log in to leave a comment</p>
+        {% endif %}
       </div>
     </div>
   </div>
 </div>
 
-<!-- Displaying count of comments -->
-<div class="row">
-  <div class="col-12">
-    <strong class="text-secondary">
-      <i class="far fa-comments"></i> {{ comment_count }}
-    </strong>
-  </div>
-  <div class="col-12">
-    <hr />
-  </div>
-</div>
-
-<!-- Displaying Comments -->
-<div class="row">
-  <div class="col-md-8 card mb-4 mt-3">
-    <h3>Comments:</h3>
-    <div class="card-body">
-      <!-- We want a for loop inside the empty control tags
-          to iterate through each comment in comments -->
-      {% for comment in comments %}
-      <div
-        class="p-2 comments {% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}"
-      >
-        <p class="font-weight-bold">
-          {{ comment.author }}
-          <span class="font-weight-normal"> {{ comment.created_on }} </span>
-          wrote:
-        </p>
-        <div id="comment{{ comment.id }}">{{ comment.body | linebreaks }}</div>
-        {% if not comment.approved and comment.author == user %}
-        <p class="approval">This comment is awaiting approval</p>
-        {% if user.is_authenticated and comment.author == user %}
-        <button class="btn btn-delete" comment_id="{{ comment.id }}">
-          Delete
-        </button>
-        <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
-        {% endif %} {% endif %}
-      </div>
-      <!-- Our for loop ends here -->
-      {% endfor %}
-    </div>
-  </div>
-  <!-- Creating New Comments -->
-  <div class="col-md-4 card mb-4 mt-3">
-    <div class="card-body">
-      {% if user.is_authenticated %}
-      <h3>Leave a comment:</h3>
-      <p>Posting as: {{ user.username }}</p>
-      <form id="commentForm" method="post" style="margin-top: 1.3em">
-        {{ comment_form | crispy }} {% csrf_token %}
-        <button id="submitButton" type="submit" class="btn btn-signup btn-lg">
-          Submit
-        </button>
-      </form>
-      {% else %}
-      <p>Log in to leave a comment</p>
-      {% endif %}
-    </div>
-  </div>
-</div>
-
-<!-- Delete confirmation modal -->
+<!-- Delete Confirmation Modal -->
 <div
   class="modal fade"
   id="deleteModal"
