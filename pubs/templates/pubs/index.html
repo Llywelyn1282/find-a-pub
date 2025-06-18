@@ -28,7 +28,10 @@
                             </div>
                             <a href="{% url 'pub_detail' post.slug %}" class="pub-link">
                                 <h2 class="card-title">{{ post.name }}</h2>
-                                <p class="card-text">{{ post.excerpt }}</p>
+                                <p class="card-text">
+                                    {{ post.excerpt }} 
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </p>
                             </a>
 
                             <hr />
