@@ -44,7 +44,7 @@ class Pub(models.Model):
     dog_friendly = models.CharField(choices=YESORNO, default="No")
     pool_table = models.CharField(choices=YESORNO, default="No")
     dart_board = models.CharField(choices=YESORNO, default="No")
-    excerpt = models.TextField(blank=True)
+    excerpt = models.TextField(max_length=100, blank=True)
     description = models.TextField()
     author = models.ForeignKey(
             User, on_delete=models.CASCADE, related_name="pub_listing")
