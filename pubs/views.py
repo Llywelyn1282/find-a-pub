@@ -8,7 +8,7 @@ from .forms import CommentForm
 
 # Create your views here.
 class PubList(generic.ListView):
-    queryset = Pub.objects.filter(status=1)
+    queryset = Pub.objects.filter(status=1).order_by("?")
     template_name = "pubs/index.html"
     paginate_by = 6
 
