@@ -62,24 +62,37 @@
       <div class="card-body">
         <p class="card-text">{{ pub.description | safe }}</p>
       </div>
-
       <div class="card-body">
         <div class="row">
           <!-- Opening Hours -->
           <div class="card-body col-6">
             <h2>Opening Hours</h2>
+          </div>
+          <div class="row">
+            <div class="col-3">
             <p class="card-text">
-              Monday: {{ pub.mon_opening }}<br />
-              Tuesday: {{ pub.tues_opening }}<br />
-              Wednesday: {{ pub.wed_opening }}<br />
-              Thursday: {{ pub.thurs_opening }}<br />
-              Friday: {{ pub.fri_opening }}<br />
-              Saturday: {{ pub.sat_opening }}<br />
-              Sunday: {{ pub.sun_opening }}
+              Monday:<br />
+              Tuesday:<br />
+              Wednesday:<br />
+              Thursday:<br />
+              Friday:<br />
+              Saturday:<br />
+              Sunday:
             </p>
           </div>
-
-          <!-- Contact Details -->
+          <div class="col-3">
+              <p class="card-text">
+              {{ pub.mon_opening }}<br />
+              {{ pub.tues_opening }}<br />
+              {{ pub.wed_opening }}<br />
+              {{ pub.thurs_opening }}<br />
+              {{ pub.fri_opening }}<br />
+              {{ pub.sat_opening }}<br />
+              {{ pub.sun_opening }}
+            </p>
+            </div>
+          </div>
+        <!-- Contact Details -->
           <div class="card-body col-6">
             <h2>Contact Details</h2>
             <p class="card-text">
@@ -91,6 +104,7 @@
           </div>
         </div>
       </div>
+      
 
       <div class="card-body">
         <p>{{ pub.author }} | last updated {{ pub.updated }}</p>

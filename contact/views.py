@@ -10,9 +10,11 @@ def contact(request):
         contact_form = ContactForm(data=request.POST)
         if contact_form.is_valid():
             contact_form.save()
-            messages.add_message
-            (request, messages.SUCCESS,
-                "Message received. We will respond as soon as possible.")
+            messages.add_message(
+                request, 
+                messages.SUCCESS,
+                "Message received. We will respond as soon as possible."
+                )
 
     contact_form = ContactForm()
 
