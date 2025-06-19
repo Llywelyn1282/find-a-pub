@@ -13,9 +13,18 @@
 
 /* Base Styles */
 
+html {
+  overflow-x: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--color-3);
   font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
 
 a {
@@ -27,6 +36,12 @@ a:hover,
 .nav-link:hover {
   color: var(--color-1);
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Typography */
@@ -41,6 +56,11 @@ h1 {
   font-size: 3rem;
   font-weight: bold;
   color: var(--white);
+}
+
+.card-text {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Header/ Footer & Navigation */
@@ -60,17 +80,23 @@ h1 {
 
 .index-card {
   width: 100%;
-  height: 470px;
+  height: 30%;
 }
 
 .image-container {
   position: relative;
+  overflow: hidden;
+}
+
+.card-img-top {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .location {
   position: absolute;
   bottom: 5%;
-  min-width: relative;
   background-color: var(--color-1);
   color: var(--white);
   padding: 3%;
@@ -97,6 +123,13 @@ h1 {
 .masthead-image {
   position: relative;
   overflow: hidden;
+}
+
+.masthead-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .post-title {

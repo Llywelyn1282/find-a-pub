@@ -3,7 +3,7 @@
 
 <!-- Masthead -->
 <div class="masthead">
-  <div class="container">
+  <div class="container my-4">
     <div class="row g-0">
       <div class="col-md-6 masthead-body">
         <h1 class="post-title">{{ pub.name }}</h1>
@@ -27,10 +27,10 @@
           <p class="pub-dog"><i class="fa-solid fa-dog"></i> Dog Friendly</p>
           {% endif %}
           {% if pub.pool_table == "Yes" %}
-          <p class="pub-pool"><i class="fa-solid fa-trophy"></i> Pool Table</p>
+          <p class="pub-pool"><i class="fa-solid fa-wand-magic"></i> Pool Table</p>
           {% endif %}
           {% if pub.dart_board == "Yes" %}
-          <p class="pub-darts"><i class="fa-solid fa-trophy"></i> Dart Board</p>
+          <p class="pub-darts"><i class="fa-solid fa-bullseye"></i> Dart Board</p>
           {% endif %}
         </div>
       </div>
@@ -63,7 +63,7 @@
         <p class="card-text">{{ pub.description | safe }}</p>
       </div>
 
-      <div class="card-body container">
+      <div class="card-body">
         <div class="row">
           <!-- Opening Hours -->
           <div class="card-body col-6">
