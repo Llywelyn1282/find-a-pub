@@ -18,7 +18,7 @@ def pub_detail(request, slug):
     queryset = Pub.objects.filter(status=1)
     pub = get_object_or_404(queryset, slug=slug)
     comments = pub.comments.all().order_by("-created_on")
-    comment_count = pub.comments.filter(approved=True).count()
+    comment_count = pub.comments.count()
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
