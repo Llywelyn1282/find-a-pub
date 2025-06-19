@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.contrib import messages
-from .models import ContactForm
 from .forms import ContactForm
 
 
@@ -11,7 +10,7 @@ def contact(request):
         if contact_form.is_valid():
             contact_form.save()
             messages.add_message(
-                request, 
+                request,
                 messages.SUCCESS,
                 "Message received. We will respond as soon as possible."
                 )
