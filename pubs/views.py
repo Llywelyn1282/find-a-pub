@@ -13,6 +13,34 @@ class PubList(generic.ListView):
     paginate_by = 6
 
 
+def pub_list(request):
+    filters = request.GET.get('filters')
+    pubs = Pub.objects.all()
+    filter_list = []
+
+    if filters:
+        filter_list = filters.split(',')
+
+        for f in filter_list:
+            if f == "food":
+                pubs = pubs.filter(food="Yes")
+            elif f == "craft_beer":
+                pubs = pubs.filter(craft_beer="Yes")
+            elif f == "beer_garden":
+                pubs = pubs.filter(beer_garden="Yes")
+            elif f == "dog_friendly":
+                pubs = pubs.filter(dog_friendly="Yes")
+            elif f == "pool_table":
+                pubs = pubs.filter(pool_table="Yes")
+            elif f == "dart_board":
+                pubs = pubs.filter(dart_board="Yes")
+
+    return render(request, "pub_list.html", {
+        "pubs": pubs,
+        "selected_filters": filter_list,
+    })
+
+
 def pub_detail(request, slug):
 
     queryset = Pub.objects.filter(status=1)
@@ -63,8 +91,7 @@ def comment_edit(request, slug, comment_id):
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
-            messages.add_message
-            (request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(request, messages.ERROR, 'Error updating comment!')
 
     return HttpResponseRedirect(reverse('pub_detail', args=[slug]))
 
@@ -74,7 +101,7 @@ def comment_delete(request, slug, comment_id):
     view to delete comment
     """
     queryset = Pub.objects.filter(status=1)
-    post = get_object_or_404(queryset, slug=slug)
+    pub = get_object_or_404(queryset, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.author == request.user:

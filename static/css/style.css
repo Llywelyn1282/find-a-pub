@@ -73,7 +73,11 @@ h1 {
 
 .nav-link {
   color: var(--white);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: bolder;
 }
 
 /* Index */
@@ -102,6 +106,47 @@ h1 {
   padding: 3%;
   padding-bottom: 0%;
 }
+
+/* Filters */
+
+.filter-btn {
+  background-color: var(--color-1);
+  color: var(--white);
+  cursor: pointer;
+  padding: 0.25em 0.5em;
+  border-radius: 0.5em;
+  margin-top: 0.5em;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px;
+  transition: background-color 0.2s;
+}
+
+.filter-btn {
+    padding: 10px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: var(--white);
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 4px;
+    transition: background-color 0.2s;
+  }
+
+  .filter-btn.active {
+    background-color: var(--color-5);
+    color: white;
+    border-color: var(--color-5);
+  }
+
+  .filter-btn:hover {
+    background-color: var(--color-1);
+  }
 
 /* Posts */
 

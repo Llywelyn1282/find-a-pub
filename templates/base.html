@@ -79,15 +79,15 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a
-                  class="nav-link {% if request.path == home_url %}active{% endif %}"
+                  class="nav-link {% if request.resolver_match.url_name == 'Pubs' %}active{% endif %}"
                   aria-current="page"
                   href="{% url 'Pubs' %}"
-                  >home</a
-                >
+                  >home</p>
+                  </a>
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link {% if request.path == about_url %}active{%endif%}"
+                  class="nav-link {% if request.resolver_match.url_name == 'about' %}active{%endif%}"
                   aria-current="page"
                   href="{% url 'about' %}"
                   >about</a
@@ -95,7 +95,7 @@
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link {% if request.path == about_url %}active{%endif%}"
+                  class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{%endif%}"
                   aria-current="page"
                   href="{% url 'contact' %}"
                   >contact</a
