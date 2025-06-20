@@ -10,7 +10,7 @@ from .forms import CommentForm
 class PubList(generic.ListView):
     queryset = Pub.objects.filter(status=1).order_by("?")
     template_name = "pubs/index.html"
-    paginate_by = 6
+    paginate_by = 18
 
 
 def pub_list(request):
