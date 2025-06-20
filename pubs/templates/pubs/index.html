@@ -27,9 +27,9 @@
           <div class="card-body">
             <div class="image-container mb-2">
               {% if "placeholder" in post.featured_image.url %}
-                <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image" />
+                <img class="card-img-index" src="{% static 'images/default.jpg' %}" alt="placeholder image" />
               {% else %}
-                <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.name }}" />
+                <img class="card-img-index" src="{{ post.image.url }}" alt="{{ post.name }}" />
               {% endif %}
               <div class="location">
                 <p class="location-text">{{ post.location }}</p>

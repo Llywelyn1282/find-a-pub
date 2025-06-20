@@ -2,8 +2,8 @@
 {% block content %}
 
 <!-- Masthead -->
-<div class="masthead">
   <div class="container my-4">
+    <div class="masthead">
     <div class="row g-0">
       <div class="col-md-6 masthead-body">
         <h1 class="post-title">{{ pub.name }}</h1>
@@ -42,13 +42,13 @@
       <div class="d-none d-md-block col-md-6 masthead-image">
         {% if "placeholder" in pub.image.url %}
         <img
-          class="card-img-top"
+          class="card-img-mast"
           src="{% static 'images/default.jpg' %}"
           alt="placeholder image"
         />
         {% else %}
         <img
-          class="card-img-top"
+          class="card-img-mast"
           src="{{ pub.image.url }}"
           alt="{{ pub.name }}"
         />
@@ -134,7 +134,7 @@
           </div>
 
           <!-- Display Comments -->
-          <div class="col-md-8 card mb-4 mt-3">
+          <div class="col-md-8 card card-comment-display mb-4 mt-3">
             <h3>Comments:</h3>
             <div class="card-body">
               {% for comment in comments %}
@@ -166,7 +166,7 @@
           </div>
 
           <!-- Add New Comment -->
-          <div class="col-md-4 card mb-4 mt-3">
+          <div class="col-md-4 card card-comment-add mb-4 mt-3">
             <div class="card-body">
               {% if user.is_authenticated %}
               <h3>Leave a comment:</h3>

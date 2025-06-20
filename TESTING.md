@@ -15,3 +15,7 @@ Had trouble targeting active page in navbar.
 
 First issue: Changed to {% if request.resolver_match.url_name == 'home' %} instead of {% if request.path == home_url %}
 Second issue: Changed name to the correct "Pubs" instead of "home".
+
+Unable to target socials using css
+
+was using "a .socials {}" instead of ".socials a {}"
