@@ -363,3 +363,52 @@ h1 {
 .approval {
   color: var(--color-4);
 }
+
+@media screen and (max-width: 576px) {
+  .masthead {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 5%;
+  margin-top: 3%;
+  box-sizing: border-box;
+}
+
+.masthead-body {
+  background-color: var(--color-5);
+  color: var(--white);
+  width: 100%;
+  margin: 0;
+  border-radius: 0.5rem 0.5rem 0 0;
+  order: 1;
+  box-sizing: border-box;
+}
+
+.masthead-image {
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  order: 2;
+}
+
+.masthead-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 0;
+}
+
+.post-content {
+  padding: 0 5%;
+  margin: 0 5%;
+}
+
+
+.card-comment-add, .card-comment-display {
+ border-radius: .5rem;
+}
+
+}
