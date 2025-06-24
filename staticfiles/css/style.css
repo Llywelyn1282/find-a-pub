@@ -27,21 +27,23 @@ body {
   overflow-x: hidden;
 }
 
-a {
-  color: var(--black);
-  text-decoration: none;
-}
-
-a:hover,
-.nav-link:hover {
-  color: var(--color-1);
-  text-decoration: none;
-}
-
 img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+a {
+  color: var(--black);
+}
+
+a:hover {
+ color: var(--color-1)
+}
+
+.card {
+  border-radius: 0.5rem;
+  padding: 2%;
 }
 
 /* Typography */
@@ -56,6 +58,10 @@ h1 {
   font-size: 3rem;
   font-weight: bold;
   color: var(--white);
+}
+
+.brand:hover {
+  color: var(--color-1);
 }
 
 .card-text {
@@ -73,11 +79,53 @@ h1 {
 
 .nav-link {
   color: var(--white);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+}
+
+.nav-link:hover {
+  color: var(--color-1);
 }
 
 .navbar-nav .nav-link.active {
   font-weight: bolder;
+}
+
+.navbar-toggler {
+  color: var(--white);
+  border: 3px solid rgba(255 , 255 , 255 , 1);
+}
+
+/* Messages */
+
+.login-bar-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1rem;
+}
+
+.login-bar {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.alert-message {
+  display: block;
+  color: var(--black);
+  background-color: var(--white);
+  padding: 15px;
+  text-align: center;
+  border: 1px solid rgba(0 , 0 , 0 , .125);
+  border-radius: 0 0 0.5rem 0.5rem;
+  margin: 0;
+}
+
+.socials a {
+  color: var(--white);
+  font-size: 1.3rem;
+}
+
+.socials a:hover {
+  color: var(--color-1);
 }
 
 /* Index */
@@ -89,33 +137,34 @@ h1 {
 
 .image-container {
   position: relative;
-  overflow: hidden;
 }
 
-.card-img-top {
+.card-img-index {
   max-width: 100%;
   height: auto;
   display: block;
+  border-radius: 0.5rem;
 }
 
 .location {
   position: absolute;
   bottom: 5%;
-  background-color: var(--color-1);
+  background-color: var(--color-5);
   color: var(--white);
   padding: 3%;
   padding-bottom: 0%;
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 /* Filters */
 
 .filter-btn {
-  background-color: var(--color-1);
+  background-color: var(--color-5);
   color: var(--white);
   cursor: pointer;
-  padding: 0.25em 0.5em;
-  border-radius: 0.5em;
-  margin-top: 0.5em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
   user-select: none;
   display: inline-flex;
   align-items: center;
@@ -124,24 +173,10 @@ h1 {
   transition: background-color 0.2s;
 }
 
-.filter-btn {
-    padding: 10px 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    color: black;
-    cursor: pointer;
-    user-select: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    margin: 4px;
-    transition: background-color 0.2s;
-  }
-
   .filter-btn.active {
-    background-color: var(--color-5);
-    color: white;
-    border-color: var(--color-5);
+    background-color: var(--color-1);
+    color: var(--white);
+    border-color: var(--color-1);
   }
 
   .filter-btn:hover {
@@ -151,30 +186,37 @@ h1 {
 /* Posts */
 
 .masthead {
-  margin-top: 5px;
   overflow: hidden;
   position: relative;
-  display: inline-block;
-  height: 45vh;
   width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin-top: 3%;
 }
 
 .masthead-body {
   background-color: var(--color-5);
   color: var(--white);
   position: relative;
+  margin: 0;
+  border-radius: 0.5rem 0 0 0;
 }
 
 .masthead-image {
-  position: relative;
+  position:relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
 .masthead-image img {
   width: 100%;
-  height: 100%;
+  height: 350px;
   object-fit: cover;
-  display: block;
+  object-position: center;
+  border-radius: 0 0.5rem 0 0;
 }
 
 .post-title {
@@ -199,14 +241,58 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-left: 5%;
+  margin: 2rem 2rem 2rem 5%;
 }
 
 .pub-amenities p {
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+}
+
+.post-content {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.post-author {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hours-contact {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+/* Comments */
+
+.card-comment-display {
+  border-radius: 0.5rem 0 0 0.5rem;
+  padding: 2%;
+}
+
+.card-comment-add {
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 2%;
+}
+
+/* About */
+
+.about-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+}
+
+.about-text
+{
+  padding: 2%;
+}
+
+.about-card {
+  margin-bottom: 8px;
 }
 
 /* Links */
@@ -262,6 +348,10 @@ h1 {
   color: #e84610;
   background: transparent;
   border: none;
+}
+
+.navbar-toggler {
+  color: var(--white);
 }
 
 /* Misc */

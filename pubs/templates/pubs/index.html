@@ -8,12 +8,29 @@
 <div class="container my-4">
   <div class="row justify-content-center">
     <div class="filters d-flex flex-wrap gap-3 justify-content-center text-center">
-      <p class="filter-btn" data-filter="food"><i class="fa-solid fa-utensils"></i> Food</p>
-      <p class="filter-btn" data-filter="craft_beer"><i class="fa-solid fa-beer-mug-empty"></i> Craft Beer</p>
-      <p class="filter-btn" data-filter="beer_garden"><i class="fa-solid fa-umbrella-beach"></i> Outside Seating</p>
-      <p class="filter-btn" data-filter="dog_friendly"><i class="fa-solid fa-dog"></i> Dog Friendly</p>
-      <p class="filter-btn" data-filter="pool_table"><i class="fa-solid fa-wand-magic"></i> Pool Table</p>
-      <p class="filter-btn" data-filter="dart_board"><i class="fa-solid fa-bullseye"></i> Dart Board</p>
+      <ul class="list-unstyled list-inline d-flex justify-content-between">
+        <li class="list-inline-item">
+          <p class="filter-btn" id="filter-food" data-filter="food"><i class="fa-solid fa-utensils"></i> Food</p>
+        </li>
+        <li class="list-inline-item">
+          <p class="filter-btn" id="filter-craft" data-filter="craft_beer"><i class="fa-solid fa-beer-mug-empty"></i> Craft Beer</p>
+        </li>
+        <li class="list-inline-item">
+          <p class="filter-btn" id="filter-outdoor" data-filter="beer_garden"><i class="fa-solid fa-umbrella-beach"></i> Outside Seating</p>
+        </li>
+        <li class="list-inline-item">
+          <p class="filter-btn" id="filter-dog" data-filter="dog_friendly"><i class="fa-solid fa-dog"></i> Dog Friendly</p>
+        </li>
+        <li class="list-inline-item">
+          <p class="filter-btn" id="filter-pool" data-filter="pool_table"><i class="fa-solid fa-wand-magic"></i> Pool Table</p>
+        </li>
+        <li>
+          <p class="filter-btn" id="filter-darts" data-filter="dart_board"><i class="fa-solid fa-bullseye"></i> Dart Board</p>
+        </li>
+        <li class="list-inline-item">
+          <p class="filter-btn" id="filter-clear">Clear Filters</p>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
@@ -76,4 +93,5 @@
 {% endif %}
 
 <!-- index.html content ends here -->
+<script src="{% static 'js/filters.js' %}"></script>
 {% endblock %}

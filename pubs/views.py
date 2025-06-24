@@ -7,40 +7,36 @@ from .forms import CommentForm
 
 
 # Create your views here.
+
+# Home Page
 class PubList(generic.ListView):
     queryset = Pub.objects.filter(status=1).order_by("?")
     template_name = "pubs/index.html"
-    paginate_by = 18
 
 
-def pub_list(request):
-    filters = request.GET.get('filters')
-    pubs = Pub.objects.all()
-    filter_list = []
+# Filters
+def pub_filtered_list(request):
+    pubs = Pub.objects.filter(status=1)
+    filter_list = request.GET.get('filters', '')
+    filters = filter_list.split(',') if filter_list else []
 
-    if filters:
-        filter_list = filters.split(',')
+    if 'food' in filters:
+        pubs = pubs.filter(food="Yes")
+    if 'craft_beer' in filters:
+        pubs = pubs.filter(craft_beer="Yes")
+    if 'beer_garden' in filters:
+        pubs = pubs.filter(beer_garden="Yes")
+    if 'dog_friendly' in filters:
+        pubs = pubs.filter(dog_friendly="Yes")
+    if 'pool_table' in filters:
+        pubs = pubs.filter(pool_table="Yes")
+    if 'dart_board' in filters:
+        pubs = pubs.filter(dart_board="Yes")
 
-        for f in filter_list:
-            if f == "food":
-                pubs = pubs.filter(food="Yes")
-            elif f == "craft_beer":
-                pubs = pubs.filter(craft_beer="Yes")
-            elif f == "beer_garden":
-                pubs = pubs.filter(beer_garden="Yes")
-            elif f == "dog_friendly":
-                pubs = pubs.filter(dog_friendly="Yes")
-            elif f == "pool_table":
-                pubs = pubs.filter(pool_table="Yes")
-            elif f == "dart_board":
-                pubs = pubs.filter(dart_board="Yes")
-
-    return render(request, "pub_list.html", {
-        "pubs": pubs,
-        "selected_filters": filter_list,
-    })
+    return render(request, "pubs/index.html", {"pub_list": pubs})
 
 
+# Pub Detail Page
 def pub_detail(request, slug):
 
     queryset = Pub.objects.filter(status=1)
@@ -72,7 +68,7 @@ def pub_detail(request, slug):
             },
     )
 
-
+# Comment Edit
 def comment_edit(request, slug, comment_id):
     """
     view to edit comments
@@ -95,7 +91,7 @@ def comment_edit(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('pub_detail', args=[slug]))
 
-
+# Comment Delete
 def comment_delete(request, slug, comment_id):
     """
     view to delete comment
