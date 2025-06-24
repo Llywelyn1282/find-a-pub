@@ -6,9 +6,8 @@ const activeFilters = new Set();
 function updateFilters() {
   const filterArray = Array.from(activeFilters);
   const query = filterArray.length ? `?filters=${filterArray.join(",")}` : "";
-  window.location.href = "" + query;
+  window.location.href = "/filter/" + query;
 }
-
 
 // Filter On/Off/Add
 filterButtons.forEach((button) => {
@@ -33,7 +32,7 @@ filterButtons.forEach((button) => {
 clearButton.addEventListener("click", () => {
   filterButtons.forEach((btn) => btn.classList.remove("active"));
   activeFilters.clear();
-  window.location.href = "";
+  window.location.href = "/filter/";
 });
 
 // Highlight Active Filters on Page Load
