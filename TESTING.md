@@ -50,6 +50,10 @@ Testing was focused to ensure the following criteria were met:
 
 ![Home](static/images/home-lighthouse.png)
 
+#### __Pub Detail Page__
+
+![Pub Detail](static/images/pub-detail-lighthouse.png)
+
 #### __About Page__
 
 ![About](static/images/about-lighthouse.png)
@@ -58,18 +62,34 @@ Testing was focused to ensure the following criteria were met:
 
 ![Contact](static/images/contact-lighthouse.png)
 
-#### __Contact Page__
+#### __Sign Up Page__
 
-![Contact](/assets/documentation/contact-lighthouse.png)
+![Sign Up](static/images/signup-lighthouse.png)
 
-#### __404 Page__
+#### __Sign Up Page__
 
-![404](/static/images/404-lighthouse.png)
+![Sign In](static/images/signin-lighthouse.png)
+
+#### __Sign Up Page__
+
+![Sign Out](static/images/signout-lighthouse.png)
+
+
 
 ### Testing User Stories
 
 | Goals                 | How are they achieved? |
 | --------------------- | ---------------------- | 
+| As a **new user** I can **create an account easily** so that **I can customise my website experience and be able to leave comments etc.** | With an email a user can register for an account, the user can sign in and out easily and the user can leave comments. |
+| As an **admin** I can **create pub entries** so that **information can be displayed for users to consume**. | The admin can create a pub entry and the site displays these entries clearly and presentably. |
+| As an **admin** I can **manage pub entries** so that **data can be edited and added to with ease**. | An admin can easily create, view, edit and delete entries. |
+| As a **user** I can **view a list of pub entries easily** so that **I can see which pub best suits my needs** | A paginated list of pubs is show on the site homepage. |
+| As a **user** I can **filter the list of pub entries by set criteria** so that **I can easily manipulate the information to see what best suits my needs**. | Users can filter pubs by set criteria and can use multiple filters at once. |
+| As an **admin** I can **create draft entries** so that **I can finish them at a later date**. | An entry can be saved as a draft instead of published immediately, and can be accessed at a later date to continue creation. |
+| As a **user** I can **easily leave and view comments/reviews** so that **I can view the opinions of others while making a choice of which pub to visit**. | Users can submit a comment or review on a pub’s detail page, submitted comments displayed under the pub entry, comments for a pub are shown in chronological order (newest first), showing the timestamp and commenter name. |
+| As an **admin** I can **delete or hide comments/reviews** so that **I can retain a positive, clean and productive discourse on the site**. | The admin can delete/hide comments.
+| As a **user** I can **edit or delete comments/reviews** so that **I can change typos etc. or delete the comment alltogether if I change my mind**. | The logged in user can edit and delete their comments. |
+| As a **user** I can **visit an About and Contact page with a form** so that **I can learn about the site's goals and contact the creators in regard to any neccesary queries**. | There is an about page with information about the site and what it offers, the page also features a contact section with a form. |
 
 
 
@@ -89,16 +109,18 @@ Testing was focused to ensure the following criteria were met:
 | YouTube Link | Opens YouTube in New Tab | Clicked on Link | Opens YouTube in New Tab | Pass |
 | Instagram Link | Opens Instagram in New Tab | Clicked on Link | Opens Instagram in New Tab | Pass |
 | `Home Page` | | | | |
-| Filter | - | Clicked on Button | - | Pass |
-| Pub Detail Link | - | Clicked on Button | - | Pass |
+| Filters | Filters Data | Clicked on Button | Filters Data | Pass |
+| Pub Detail Link | Opens Pub Detail Page | Clicked on Button | Opens Pub Detail Page | Pass |
 | `Pub Detail Page` | | | | |
-| Comment Add | - | Clicked on Button | - | Pass |
-| Comment Edit | - | Clicked on Button | - | Pass |
-| Comment Delete | - | Clicked on Button | - | Pass |
+| Comment Add | Comment is added and gives Success Message | Clicked on Button | Comment is added and gives Success Message | Pass |
+| Comment Edit | Comment is edited and gives Success Message | Clicked on Button | Comment is edited and gives Success Message | Pass |
+| Comment Delete | Comment is deleted and gives Success Message | Clicked on Button | Comment is deleted and gives Success Message | Pass |
 | `Contact Page` | | | | |
-| Send Button | Sends Form To Backend Admin Section and Gives Succes Message | Clicked on Button | Sends Form To Backend Admin Section and Gives Succes Message | Pass |
+| Send Button | Sends Form To Backend Admin Section and Gives Success Message | Clicked on Button | Sends Form To Backend Admin Section and Gives Succes Message | Pass |
 | `404 Page` | | | | |
 | Back to Homepage Link | Takes User Back to Home Page | Clicked on Link | Takes User Back to Home Page | Pass |
+
+
 
 ### Validator Testing 
 

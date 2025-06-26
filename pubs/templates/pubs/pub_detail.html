@@ -48,14 +48,12 @@
         <img
           class="card-img-mast"
           src="{% static 'images/default.jpg' %}"
-          alt="placeholder image"
-        />
+          alt="placeholder image">
         {% else %}
         <img
           class="card-img-mast"
           src="{{ pub.image.url }}"
-          alt="{{ pub.name }}"
-        />
+          alt="{{ pub.name }}">
         {% endif %}
       </div>
   </div>
@@ -81,23 +79,23 @@
             <div class="row">
               <div class="col-6">
                 <p class="card-text">
-                  Monday:<br />
-                  Tuesday:<br />
-                  Wednesday:<br />
-                  Thursday:<br />
-                  Friday:<br />
-                  Saturday:<br />
+                  Monday:<br>
+                  Tuesday:<br>
+                  Wednesday:<br>
+                  Thursday:<br>
+                  Friday:<br>
+                  Saturday:<br>
                   Sunday:
                 </p>
               </div>
               <div class="col-6">
                 <p class="card-text">
-                  {{ pub.mon_opening }}<br />
-                  {{ pub.tues_opening }}<br />
-                  {{ pub.wed_opening }}<br />
-                  {{ pub.thurs_opening }}<br />
-                  {{ pub.fri_opening }}<br />
-                  {{ pub.sat_opening }}<br />
+                  {{ pub.mon_opening }}<br>
+                  {{ pub.tues_opening }}<br>
+                  {{ pub.wed_opening }}<br>
+                  {{ pub.thurs_opening }}<br>
+                  {{ pub.fri_opening }}<br>
+                  {{ pub.sat_opening }}<br>
                   {{ pub.sun_opening }}
                 </p>
                 <br>
@@ -109,9 +107,9 @@
           <div class="col-md-6">
             <h2>Contact Details</h2>
             <p class="card-text">
-              Phone: {{ pub.phone_number }}<br />
-              Email: {{ pub.email }}<br />
-              Website: {{ pub.website }}<br />
+              Phone: {{ pub.phone_number }}<br>
+              Email: {{ pub.email }}<br>
+              Website: {{ pub.website }}<br>
               Address: {{ pub.address }}
             </p>
             <br>
@@ -130,7 +128,7 @@
             <p class="comment-counter">
               <i class="far fa-comments"></i> {{ comment_count }}
             </p>
-            <hr />
+            <hr>
           </div>
 
           <!-- Display Comments -->
