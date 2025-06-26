@@ -127,11 +127,11 @@ Testing was focused to ensure the following criteria were met:
 HTML
   - No errors were returned when passing through the official [W3C Validator](https://validator.w3.org)
 
-  ![Index HTML Validator Results](static/images//home-validation.png)
+  ![Home HTML Validator Results](static/images//home-validation.png)
+
+  ![About HTML Validator Results](static/images/about-validation.png)
 
   ![Contact HTML Validator Results](static/images/contact-validation.png)
-
-  ![404 HTML Validator Results](static/images/404-validation.png)
 
 CSS
   - No errors were found when passing through the official [Jigsaw Validator](https://jigsaw.w3.org)
@@ -141,7 +141,9 @@ CSS
 JavaScript
  - No errors were found when passing through the official [JSHint Validator](https://www.jshint.com/)
   
-  ![JavaScript Validator Results ](static/images/js-validation.png)
+  ![JavaScript Validator Results ](static/images/filters-validation.png)
+
+  ![JavaScript Validator Results ](static/images/comments-validation.png)
 
 Python
 - No errors were found when passing through the Code Institute Python Linter [Python Validator](https://pep8ci.herokuapp.com/)
