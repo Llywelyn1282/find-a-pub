@@ -63,8 +63,9 @@
       <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
           <a class="navbar-brand" href="{% url 'Pubs' %}"
-            ><h1 class="brand">findapub</h1
-          >
+            >
+            <h1 class="brand">findapub</h1>
+        </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -83,24 +84,27 @@
                   class="nav-link {% if request.resolver_match.url_name == 'Pubs' %}active{% endif %}"
                   aria-current="page"
                   href="{% url 'Pubs' %}"
-                  >home
-                  </a>
+                  >
+                  home
+                </a>
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link {% if request.resolver_match.url_name == 'about' %}active{%endif%}"
                   aria-current="page"
                   href="{% url 'about' %}"
-                  >about</a
-                >
+                  >
+                  about
+                </a>
               </li>
               <li class="nav-item">
                 <a
                   class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{%endif%}"
                   aria-current="page"
                   href="{% url 'contact' %}"
-                  >contact</a
-                >
+                  >
+                  contact
+                </a>
               </li>
               {% if user.is_authenticated %}
               <li class="nav-item">
@@ -108,7 +112,7 @@
                   class="nav-link {% if request.path == logout_url %}active{% endif %}"
                   aria-current="page"
                   href="{% url 'account_logout' %}"
-                >
+                  >
                   signout
                 </a>
               </li>
@@ -118,7 +122,7 @@
                   class="nav-link {% if request.path == signup_url %}active{% endif %}"
                   aria-current="page"
                   href="{% url 'account_signup' %}"
-                >
+                  >
                   signup
                 </a>
               </li>
@@ -127,7 +131,7 @@
                   class="nav-link {% if request.path == login_url %}active{% endif %}"
                   aria-current="page"
                   href="{% url 'account_login' %}"
-                >
+                  >
                   signin
                 </a>
               </li>
