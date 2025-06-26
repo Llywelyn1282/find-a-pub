@@ -68,6 +68,7 @@ def pub_detail(request, slug):
             },
     )
 
+
 # Comment Edit
 def comment_edit(request, slug, comment_id):
     """
@@ -90,6 +91,7 @@ def comment_edit(request, slug, comment_id):
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
 
     return HttpResponseRedirect(reverse('pub_detail', args=[slug]))
+
 
 # Comment Delete
 def comment_delete(request, slug, comment_id):
