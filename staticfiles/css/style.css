@@ -388,6 +388,10 @@ h1 {
   color: var(--color-4);
 }
 
+.sign-in-link a {
+color: var(--color-1);
+}
+
 @media screen and (max-width: 576px) {
   .masthead {
   display: flex;
